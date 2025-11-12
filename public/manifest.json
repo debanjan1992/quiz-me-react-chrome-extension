@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Quiz Me Now",
+  "version": "1.0",
+  "description": "A Chrome extension that generates quizzes based on user input.",
+  "permissions": ["sidePanel", "storage", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "title": "Open Quiz Me Now"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
