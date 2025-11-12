@@ -24,9 +24,9 @@
 
 ## Installation (Pre-built)
 
-If you prefer not to build the extension locally, you can download the pre-built `.zip` file from the [releases page](https://github.com/debanjan1992/quiz-me-react-chrome-extension/releases).
+If you prefer not to build the extension locally, you can download the pre-built `.zip` file.
 
-1.  Download the `extensions.zip` file from the latest release.
+1.  Download the `extensions.zip` file from the root.
 2.  Unzip the file to a directory of your choice.
 3.  Open your Chrome browser and navigate to `chrome://extensions`.
 4.  Enable "Developer mode" in the top right corner.
