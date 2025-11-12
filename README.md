@@ -1,73 +1,70 @@
-# React + TypeScript + Vite
+# Quiz Me Now Chrome Extension
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+"Quiz Me Now" is a Chrome extension designed to help users quickly create multiple-choice quizzes from any text content on a webpage. Leveraging the power of the Google Gemini API, this extension provides an interactive side panel where users can generate quizzes, answer questions, and review their scores.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **Instant Quiz Generation**: Select any text on a webpage and generate a 4-question multiple-choice quiz based on the content.
+- **Google Gemini API Integration**: Utilizes the Google Gemini API for intelligent and context-aware quiz question generation.
+- **Interactive Side Panel**: All quiz interactions, including generation, answering, and score display, happen within a convenient side panel.
+- **Loading Spinner**: A Material-UI loading spinner is displayed while the quiz is being generated.
+- **Quiz Completion Feedback**: Visual feedback (success/failure icons) is provided upon quiz completion based on the user's score.
+- **API Key Management**: Securely store your Google Gemini API key using Chrome's synchronized storage.
+- **Modern UI**: Built with React and Material-UI for a clean, responsive, and user-friendly interface.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend**: React.js
+- **UI Framework**: Material-UI (MUI)
+- **Build Tool**: Vite
+- **Language**: TypeScript
+- **AI Integration**: Google Gemini API (`@google/genai`)
+- **Browser APIs**: Chrome Extension APIs (for storage, messaging, etc.)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## How to Load the Extension in Chrome Developer Mode
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Follow these steps to load and test the "Quiz Me Now" extension in your Chrome browser:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1.  **Clone the Repository** (if you haven't already):
+    ```bash
+    git clone <repository-url>
+    cd quiz-me-now
+    ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2.  **Install Dependencies**:
+    Navigate to the project root directory and install the necessary packages:
+    ```bash
+    npm install
+    ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3.  **Build the Extension**:
+    Compile the project for production. This will create a `dist` folder containing the extension's build files.
+    ```bash
+    npm run build
+    ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+4.  **Open Chrome Extensions Page**:
+    Open your Chrome browser and type `chrome://extensions` in the address bar, then press Enter.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+5.  **Enable Developer Mode**:
+    On the Chrome Extensions page, toggle on the "Developer mode" switch, usually located in the top right corner.
+
+6.  **Load Unpacked Extension**:
+    Click the "Load unpacked" button that appears after enabling Developer mode.
+
+7.  **Select the Build Folder**:
+    In the file dialog that opens, navigate to your project directory and select the `dist` folder (e.g., `path/to/quiz-me-now/dist`).
+
+8.  **Pin the Extension (Optional but Recommended)**:
+    Once loaded, the "Quiz Me Now" extension icon will appear in your browser's toolbar. Click the puzzle piece icon (Extensions) and then the pin icon next to "Quiz Me Now" to keep it visible.
+
+## Usage
+
+1.  **Set your Gemini API Key**: Right-click on the extension icon, select "Options", and enter your Google Gemini API key.
+2.  **Open the Side Panel**: Click on the extension icon to open the side panel.
+3.  **Generate a Quiz**: Navigate to any webpage, select the text you want to be quizzed on, and click the "Generate Quiz from this Page" button in the side panel.
+4.  **Answer Questions**: Select your answers for each question.
+5.  **Review Score**: After completing the quiz, your score and a success/failure icon will be displayed.
+6.  **Restart Quiz**: Click "Start New Quiz" to generate another quiz.

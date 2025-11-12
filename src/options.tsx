@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css"; // Your main tailwind styles
+import { Button, TextField, Typography, Box } from "@mui/material";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function Options() {
@@ -35,58 +35,116 @@ function Options() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h1 className="text-3xl font-bold mb-6 text-gray-800">
+    <Box
+      sx={{
+        minHeight: "100vh",
+        backgroundColor: "#f3f4f6",
+        padding: "2rem",
+      }}
+    >
+      <Box
+        sx={{
+          maxWidth: "md",
+          marginX: "auto",
+          backgroundColor: "white",
+          padding: "1.5rem",
+          borderRadius: "0.5rem",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: "bold",
+            marginBottom: "1.5rem",
+            color: "#333",
+          }}
+        >
           Quiz Me Now Settings
-        </h1>
+        </Typography>
 
-        <div className="mb-4">
-          <label
-            htmlFor="apiKey"
-            className="block text-sm font-medium text-gray-700 mb-2"
+        <Box sx={{ marginBottom: "1rem" }}>
+          <Typography
+            variant="subtitle1"
+            sx={{
+              display: "block",
+              fontWeight: "medium",
+              color: "#4b5563",
+              marginBottom: "0.5rem",
+            }}
           >
             Gemini API Token
-          </label>
-          <input
+          </Typography>
+          <TextField
             type="password"
             id="apiKey"
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            fullWidth
+            variant="outlined"
             placeholder="Enter your API key"
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                borderRadius: "0.375rem",
+                "& fieldset": {
+                  borderColor: "#d1d5db",
+                },
+                "&:hover fieldset": {
+                  borderColor: "#9ca3af",
+                },
+                "&.Mui-focused fieldset": {
+                  borderColor: "#2563eb",
+                },
+              },
+            }}
           />
-          <p className="text-xs text-gray-500 mt-1">
+          <Typography
+            variant="caption"
+            sx={{
+              color: "#6b7280",
+              marginTop: "0.25rem",
+              display: "block",
+            }}
+          >
             Your key is saved securely in Chrome's synchronized storage.
-          </p>
-        </div>
+          </Typography>
+        </Box>
 
-        <button
+        <Button
           onClick={handleSave}
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded-md font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          variant="contained"
+          color="primary"
+          fullWidth
+          sx={{
+            paddingY: "0.5rem",
+            paddingX: "1rem",
+            fontWeight: "semibold",
+            "&:hover": {
+              backgroundColor: "#1d4ed8",
+            },
+          }}
         >
           Save Key
-        </button>
+        </Button>
 
         {status && (
-          <p
-            className={`mt-4 text-sm ${
-              status.startsWith("Error") ? "text-red-600" : "text-green-600"
-            }`}
+          <Typography
+            variant="body2"
+            sx={{
+              marginTop: "1rem",
+              color: status.startsWith("Error") ? "#dc2626" : "#16a34a",
+            }}
           >
             {status}
-          </p>
+          </Typography>
         )}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 
 // Standard React 18 root setup
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
-root.render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Options />
   </React.StrictMode>

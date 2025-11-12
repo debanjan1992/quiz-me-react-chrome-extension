@@ -1,18 +1,21 @@
 import { GoogleGenAI } from "@google/genai";
 
-export interface Question {
+export interface QuizQuestion {
   question: string;
-  options: string[];
-  correctIndex: number;
+  options: { A: string; B: string; C: string };
+  correctAnswer: "A" | "B" | "C";
 }
 
 async function getApiKey(): Promise<string | null> {
   return (await chrome.storage.sync.get("geminiApiKey")).geminiApiKey || null;
 }
 
+const GEMINI_MODEL = "gemini-2.5-flash-lite";
+const MAX_TEXT_LENGTH = 10000;
+
 export const generateQuiz = async (
   textContent: string
-): Promise<Question[]> => {
+): Promise<QuizQuestion[]> => {
   const API_KEY = await getApiKey();
 
   if (!API_KEY) {
@@ -24,7 +27,7 @@ export const generateQuiz = async (
     apiKey: API_KEY,
   });
 
-  const limitedText = textContent.substring(0, 15000);
+  const limitedText = textContent.substring(0, MAX_TEXT_LENGTH);
 
   const prompt = `
   Based on the following text, generate a 4-question multiple-choice quiz.
@@ -43,7 +46,7 @@ export const generateQuiz = async (
   ---
   `;
   const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash-lite",
+    model: GEMINI_MODEL,
     contents: prompt,
   });
   console.log("Raw response", response.text);
