@@ -17,7 +17,6 @@
 ## Tech Stack
 
 - **Frontend**: React.js
-- **UI Framework**: Material-UI (MUI)
 - **Build Tool**: Vite
 - **Language**: TypeScript
 - **AI Integration**: Google Gemini API (`@google/genai`)
