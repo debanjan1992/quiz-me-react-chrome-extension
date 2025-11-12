@@ -22,6 +22,16 @@
 - **AI Integration**: Google Gemini API (`@google/genai`)
 - **Browser APIs**: Chrome Extension APIs (for storage, messaging, etc.)
 
+## Installation (Pre-built)
+
+If you prefer not to build the extension locally, you can download the pre-built `.zip` file from the [releases page](https://github.com/debanjan1992/quiz-me-react-chrome-extension/releases).
+
+1.  Download the `extensions.zip` file from the latest release.
+2.  Unzip the file to a directory of your choice.
+3.  Open your Chrome browser and navigate to `chrome://extensions`.
+4.  Enable "Developer mode" in the top right corner.
+5.  Click "Load unpacked" and select the unzipped `dist` folder.
+
 ## How to Load the Extension in Chrome Developer Mode
 
 Follow these steps to load and test the "Quiz Me Now" extension in your Chrome browser:

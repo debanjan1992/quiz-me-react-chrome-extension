@@ -29,7 +29,10 @@ function Options() {
       } else {
         setStatus("API Key saved successfully!");
         // Clear status after 3 seconds
-        setTimeout(() => setStatus(""), 3000);
+        setTimeout(() => {
+          setStatus("");
+          window.close();
+        }, 3000);
       }
     });
   };
@@ -106,7 +109,7 @@ function Options() {
               display: "block",
             }}
           >
-            Your key is saved securely in Chrome's synchronized storage.
+            Your key is saved securely in Chrome's synchronized storage. You can create a new API key at <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'underline' }}>Google AI Studio</a>.
           </Typography>
         </Box>
 
@@ -115,6 +118,7 @@ function Options() {
           variant="contained"
           color="primary"
           fullWidth
+          disabled={!apiKey}
           sx={{
             paddingY: "0.5rem",
             paddingX: "1rem",
